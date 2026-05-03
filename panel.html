@@ -44,20 +44,27 @@ body {
 <script>
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
+  apiKey: "AIzaSyA9tSOC-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
   authDomain: "cursovip-5adf5.firebaseapp.com",
-  projectId: "cursovip-5adf5"
+  projectId: "cursovip-5adf5",
 };
 
-// 🔥 EVITA ERROR BLANCO
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
+// 🔥 ESPERA A QUE FIREBASE RESPONDA
 firebase.auth().onAuthStateChanged(function(user) {
-  if (!user) {
-    window.location.href = "login.html";
+
+  if (user) {
+    console.log("Usuario activo:", user.email);
+  } else {
+    console.log("No hay usuario");
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000); // 👈 LE DAMOS TIEMPO
   }
+
 });
 
 </script>
