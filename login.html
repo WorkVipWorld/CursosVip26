@@ -5,8 +5,8 @@
 <title>Login</title>
 
 <!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
 <style>
 body {
@@ -55,9 +55,7 @@ button {
 </div>
 
 <script>
-
-// 🔥 ESPERA A QUE TODO CARGUE
-window.onload = function() {
+window.addEventListener("load", () => {
 
   const firebaseConfig = {
     apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
@@ -71,19 +69,23 @@ window.onload = function() {
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-  window.register = function(){
-    auth.createUserWithEmailAndPassword(email.value, password.value)
+  window.register = () => {
+    auth.createUserWithEmailAndPassword(
+      email.value, password.value
+    )
     .then(()=>alert("Cuenta creada"))
     .catch(e=>alert(e.message));
-  }
+  };
 
-  window.login = function(){
-    auth.signInWithEmailAndPassword(email.value, password.value)
+  window.login = () => {
+    auth.signInWithEmailAndPassword(
+      email.value, password.value
+    )
     .then(()=>window.location.href = "panel.html")
     .catch(e=>alert(e.message));
-  }
+  };
 
-}
+});
 </script>
 
 </body>
