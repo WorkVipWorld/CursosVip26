@@ -1,67 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Login</title>
-
-<!-- Firebase versión COMPAT -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-
-<style>
-body {
-  background:#0f0f1a;
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  font-family:sans-serif;
-}
-
-.box {
-  background:#1a1a2e;
-  padding:30px;
-  border-radius:10px;
-}
-
-input {
-  display:block;
-  margin:10px 0;
-  padding:10px;
-  width:100%;
-}
-
-button {
-  padding:10px;
-  background:#7f5af0;
-  color:white;
-  border:none;
-  margin-top:10px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="box">
-<h2>Acceso</h2>
-
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Contraseña">
-
-<button onclick="login()">Entrar</button>
-<button onclick="register()">Registrarse</button>
-
-</div>
-
 <script>
 
-// 🔥 CONFIG CORRECTA (SIN import)
 const firebaseConfig = {
   apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
   authDomain: "cursovip-5adf5.firebaseapp.com",
   projectId: "cursovip-5adf5",
+  storageBucket: "cursovip-5adf5.firebasestorage.app",
+  messagingSenderId: "560262525287",
   appId: "1:560262525287:web:d648afa83054e97f2f316e"
 };
 
@@ -81,6 +25,3 @@ function login(){
 }
 
 </script>
-
-</body>
-</html>
