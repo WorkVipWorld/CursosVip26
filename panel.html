@@ -1,31 +1,18 @@
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
-  authDomain: "cursovip-5adf5.firebaseapp.com"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-firebase.auth().onAuthStateChanged(user => {
-  if(!user){
-    window.location = "login.html";
-  }
-});
-</script>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Panel</title>
 
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
 <style>
 body {
   background:#0b0b15;
   color:white;
-  font-family:'Inter',sans-serif;
+  font-family:sans-serif;
+  text-align:center;
 }
 
 .grid {
@@ -40,43 +27,38 @@ body {
   padding:20px;
   border-radius:12px;
   cursor:pointer;
-  transition:0.3s;
-  text-align:center;
-}
-
-.card:hover {
-  transform:scale(1.05);
-  box-shadow:0 0 15px #7f5af0;
 }
 </style>
-
-<script>
-let pass = prompt("Ingrese contraseña:");
-
-if(pass !== "vip123"){
-  document.write("<h1 style='text-align:center;margin-top:100px;'>Acceso denegado</h1>");
-}
-</script>
 
 </head>
 
 <body>
 
-<h1 style="text-align:center;">🎬 Panel Privado</h1>
+<h1>🎬 Panel Privado</h1>
 
 <div class="grid">
-
 <div class="card" onclick="location.href='curso1.html'">
-<h3>Curso Streaming</h3>
-<p>Entrar</p>
+Curso Streaming
+</div>
 </div>
 
-<div class="card">
-<h3>Herramientas</h3>
-<p>Próximamente</p>
-</div>
+<script>
 
-</div>
+const firebaseConfig = {
+  apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
+  authDomain: "cursovip-5adf5.firebaseapp.com",
+  projectId: "cursovip-5adf5",
+};
+
+firebase.initializeApp(firebaseConfig);
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) {
+    window.location.href = "login.html";
+  }
+});
+
+</script>
 
 </body>
 </html>
