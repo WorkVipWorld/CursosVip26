@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <title>Login</title>
 
-<!-- Firebase -->
-<script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<!-- Firebase (VERSIÓN CORRECTA PARA HTML) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
 <style>
 body {
@@ -38,6 +38,7 @@ button {
   color:white;
   border:none;
   margin-top:10px;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -55,37 +56,48 @@ button {
 </div>
 
 <script>
+
 window.addEventListener("load", () => {
 
+  // 🔥 CONFIG NUEVA (LA TUYA CORRECTA)
   const firebaseConfig = {
-    apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
+    apiKey: "AIzaSyA9tSOC-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
     authDomain: "cursovip-5adf5.firebaseapp.com",
     projectId: "cursovip-5adf5",
-    storageBucket: "cursovip-5adf5.appspot.com",
-    messagingSenderId: "560262525287",
-    appId: "1:560262525287:web:d648afa83054e97f2f316e"
+    storageBucket: "cursovip-5adf5.firebasestorage.app",
+    messagingSenderId: "56026252587",
+    appId: "1:56026252587:web:f341af48c15995802f316e"
   };
 
-  firebase.initializeApp(firebaseConfig);
+  // 🔥 INICIALIZAR FIREBASE
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
   const auth = firebase.auth();
 
+  // REGISTRO
   window.register = () => {
     auth.createUserWithEmailAndPassword(
-      email.value, password.value
+      document.getElementById("email").value,
+      document.getElementById("password").value
     )
-    .then(()=>alert("Cuenta creada"))
-    .catch(e=>alert(e.message));
+    .then(() => alert("Cuenta creada correctamente"))
+    .catch(e => alert(e.message));
   };
 
+  // LOGIN
   window.login = () => {
     auth.signInWithEmailAndPassword(
-      email.value, password.value
+      document.getElementById("email").value,
+      document.getElementById("password").value
     )
-    .then(()=>window.location.href = "panel.html")
-    .catch(e=>alert(e.message));
+    .then(() => window.location.href = "panel.html")
+    .catch(e => alert(e.message));
   };
 
 });
+
 </script>
 
 </body>
