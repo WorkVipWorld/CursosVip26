@@ -4,12 +4,16 @@ const firebaseConfig = {
   apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
   authDomain: "cursovip-5adf5.firebaseapp.com",
   projectId: "cursovip-5adf5",
-  storageBucket: "cursovip-5adf5.firebasestorage.app",
+  storageBucket: "cursovip-5adf5.appspot.com",
   messagingSenderId: "560262525287",
   appId: "1:560262525287:web:d648afa83054e97f2f316e"
 };
 
-firebase.initializeApp(firebaseConfig);
+// 🔥 EVITA DOBLE INICIALIZACIÓN
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
 const auth = firebase.auth();
 
 function register(){
@@ -20,7 +24,7 @@ function register(){
 
 function login(){
   auth.signInWithEmailAndPassword(email.value, password.value)
-  .then(()=>window.location="panel.html")
+  .then(()=>window.location.href = "panel.html")
   .catch(e=>alert(e.message));
 }
 
