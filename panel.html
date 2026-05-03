@@ -2,70 +2,208 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Streaming Hub | Panel</title>
 
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-body {
-  background:#0b0b15;
-  color:white;
-  font-family:sans-serif;
-  text-align:center;
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
 }
 
-.grid {
+body{
+  background: radial-gradient(circle at top, #1a1a2e, #0b0b15);
+  color:white;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.3);
+  position:sticky;
+  top:0;
+}
+
+nav h1{
+  color:#7f5af0;
+}
+
+nav button{
+  background:#1a1a2e;
+  border:none;
+  color:white;
+  padding:10px 20px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* HEADER */
+.header{
+  padding:60px 40px;
+}
+
+.header h2{
+  font-size:2rem;
+}
+
+.header span{
+  color:#4cc9f0;
+}
+
+/* GRID */
+.grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
   padding:40px;
 }
 
-.card {
-  background:#1a1a2e;
-  padding:20px;
-  border-radius:12px;
+/* CARD */
+.card{
+  position:relative;
+  height:140px;
+  border-radius:16px;
+  overflow:hidden;
   cursor:pointer;
+  background:linear-gradient(135deg,#7f5af0,#4cc9f0);
+  display:flex;
+  align-items:flex-end;
+  padding:20px;
+  font-weight:600;
+  transition:0.4s;
 }
+
+.card:hover{
+  transform:scale(1.05);
+}
+
+/* OVERLAY */
+.card::after{
+  content:"Acceder";
+  position:absolute;
+  top:10px;
+  right:10px;
+  font-size:0.8rem;
+  opacity:0.7;
+}
+
+/* LOADER */
+.loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#0b0b15;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1.2rem;
+}
+
+/* USER */
+.user{
+  font-size:0.9rem;
+  color:#aaa;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>🎬 Panel Privado</h1>
+<!-- LOADING -->
+<div class="loader" id="loader">Cargando panel...</div>
 
+<!-- NAV -->
+<nav>
+  <h1>Elite Hub</h1>
+  <div>
+    <span class="user" id="userEmail"></span>
+    <button onclick="logout()">Salir</button>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="header">
+  <h2>Bienvenido <span id="username"></span></h2>
+  <p style="color:#aaa;margin-top:10px;">Selecciona tu contenido premium</p>
+</div>
+
+<!-- CONTENIDO -->
 <div class="grid">
-  <div class="card" onclick="location.href='curso1.html'">
+
+  <div class="card" onclick="goCurso('curso1.html')">
     Curso Streaming
   </div>
+
+  <div class="card" onclick="alert('Próximamente')">
+    Herramientas VIP
+  </div>
+
+  <div class="card" onclick="alert('Próximamente')">
+    Automatización
+  </div>
+
 </div>
 
 <script>
 
+// 🔥 CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyA9tSOC-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
   authDomain: "cursovip-5adf5.firebaseapp.com",
-  projectId: "cursovip-5adf5",
+  projectId: "cursovip-5adf5"
 };
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-// 🔥 ESPERA A QUE FIREBASE RESPONDA
-firebase.auth().onAuthStateChanged(function(user) {
+const auth = firebase.auth();
+const loader = document.getElementById("loader");
+
+// 🔐 PROTECCIÓN REAL
+auth.onAuthStateChanged(user => {
 
   if (user) {
-    console.log("Usuario activo:", user.email);
+
+    // Mostrar usuario
+    document.getElementById("userEmail").innerText = user.email;
+    document.getElementById("username").innerText = user.email.split("@")[0];
+
+    // Quitar loader
+    loader.style.display = "none";
+
   } else {
-    console.log("No hay usuario");
-    setTimeout(() => {
-      window.location.href = "login.html";
-    }, 1000); // 👈 LE DAMOS TIEMPO
+    window.location.href = "login.html";
   }
 
 });
+
+// 🚪 LOGOUT
+function logout(){
+  auth.signOut().then(()=>{
+    window.location.href = "login.html";
+  });
+}
+
+// 📲 ACCESO CURSO
+function goCurso(url){
+  window.location.href = url;
+}
 
 </script>
 
