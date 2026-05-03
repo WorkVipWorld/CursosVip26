@@ -24,50 +24,93 @@ nav{
   display:flex;
   justify-content:space-between;
   padding:20px 40px;
+  backdrop-filter:blur(10px);
   background:rgba(0,0,0,0.3);
 }
 
-.user{color:#aaa;}
+.logo{
+  color:#7f5af0;
+  font-weight:600;
+}
+
+.user{
+  font-size:0.9rem;
+  color:#aaa;
+}
+
+.logout{
+  margin-left:15px;
+  background:#1a1a2e;
+  border:none;
+  color:white;
+  padding:8px 15px;
+  border-radius:10px;
+  cursor:pointer;
+}
 
 /* HEADER */
 .header{
-  padding:40px;
+  text-align:center;
+  padding:60px 20px 20px;
 }
 
-/* SECCIONES */
-.section{
-  padding:20px 40px;
-}
-
-.section h3{
-  margin-bottom:15px;
+.header h2 span{
   color:#4cc9f0;
 }
 
-/* FILAS */
-.row{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  padding-bottom:10px;
+.header p{
+  color:#aaa;
+  margin-top:10px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  padding:40px;
 }
 
 /* CARD */
 .card{
-  min-width:220px;
-  height:140px;
-  border-radius:16px;
-  padding:20px;
+  height:160px;
+  border-radius:18px;
+  padding:25px;
   display:flex;
-  align-items:flex-end;
-  font-weight:600;
+  flex-direction:column;
+  justify-content:space-between;
   cursor:pointer;
   background:linear-gradient(135deg,#7f5af0,#4cc9f0);
-  transition:0.3s;
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+/* EFECTO BRILLO */
+.card::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:rgba(255,255,255,0.05);
+  top:-50%;
+  left:-50%;
+  transform:rotate(25deg);
 }
 
 .card:hover{
   transform:scale(1.05);
+  box-shadow:0 0 30px rgba(127,90,240,0.5);
+}
+
+/* TEXTO CARD */
+.card h3{
+  font-size:1.2rem;
+}
+
+.card span{
+  font-size:0.8rem;
+  opacity:0.8;
 }
 
 /* LOADER */
@@ -79,15 +122,18 @@ nav{
   display:flex;
   justify-content:center;
   align-items:center;
+  font-size:1.2rem;
 }
 
-button{
-  background:#1a1a2e;
-  border:none;
-  color:white;
-  padding:10px 20px;
-  border-radius:10px;
-  cursor:pointer;
+/* BADGE */
+.badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  font-size:0.7rem;
+  background:rgba(0,0,0,0.3);
+  padding:5px 10px;
+  border-radius:20px;
 }
 
 </style>
@@ -95,68 +141,53 @@ button{
 
 <body>
 
-<div class="loader" id="loader">Cargando...</div>
+<div class="loader" id="loader">Cargando panel...</div>
 
 <nav>
+  <div class="logo">Elite Hub</div>
   <div>
-    <span id="userEmail"></span>
+    <span class="user" id="userEmail"></span>
+    <button class="logout" onclick="logout()">Salir</button>
   </div>
-  <button onclick="logout()">Salir</button>
 </nav>
 
 <div class="header">
   <h2>Bienvenido <span id="username"></span></h2>
-  <p style="color:#aaa;">Accede a tu contenido premium</p>
+  <p>Accede a tu contenido exclusivo</p>
 </div>
 
-<!-- 🎬 STREAMING -->
-<div class="section">
-  <h3>🎬 Curso Streaming</h3>
-  <div class="row">
-    <div class="card" onclick="goCurso('curso1.html')">Curso básico</div>
-    <div class="card" onclick="goCurso('curso2.html')">Configuración</div>
-  </div>
-</div>
+<div class="grid">
 
-<!-- 🧠 AVANZADO -->
-<div class="section">
-  <h3>🧠 Curso Avanzado + Métodos</h3>
-  <div class="row">
-    <div class="card" onclick="goCurso('curso3.html')">Métodos PRO</div>
-    <div class="card" onclick="goCurso('curso4.html')">Automatización</div>
+  <div class="card" onclick="goCurso('curso1.html')">
+    <div class="badge">Curso</div>
+    <h3>🎬 Streaming</h3>
+    <span>Aprende desde cero</span>
   </div>
-</div>
 
-<!-- 💎 PREMIUM -->
-<div class="section">
-  <h3>💎 Contenido Premium</h3>
-  <div class="row">
-    <div class="card" onclick="goCurso('premium1.html')">Accesos VIP</div>
+  <div class="card" onclick="goCurso('curso2.html')">
+    <div class="badge">Avanzado</div>
+    <h3>🧠 Métodos PRO</h3>
+    <span>Estrategias avanzadas</span>
   </div>
-</div>
 
-<!-- 🛠 HERRAMIENTAS -->
-<div class="section">
-  <h3>🛠 Herramientas VIP</h3>
-  <div class="row">
-    <div class="card" onclick="goCurso('tools.html')">Herramientas</div>
+  <div class="card" onclick="goCurso('premium1.html')">
+    <div class="badge">Premium</div>
+    <h3>💎 Contenido VIP</h3>
+    <span>Accesos exclusivos</span>
   </div>
-</div>
 
-<!-- ⚙️ TOOLS -->
-<div class="section">
-  <h3>⚙️ Tools</h3>
-  <div class="row">
-    <div class="card" onclick="goCurso('tools2.html')">Scripts</div>
+  <div class="card" onclick="goCurso('tools.html')">
+    <div class="badge">Tools</div>
+    <h3>🛠 Herramientas</h3>
+    <span>Recursos útiles</span>
   </div>
-</div>
 
-<!-- 📦 OTROS -->
-<div class="section">
-  <h3>📦 Otros</h3>
-  <div class="row">
-    <div class="card" onclick="goCurso('otros.html')">Extras</div>
+  <div class="card" onclick="goCurso('otros.html')">
+    <div class="badge">Extra</div>
+    <h3>📦 Otros</h3>
+    <span>Contenido adicional</span>
   </div>
+
 </div>
 
 <script>
