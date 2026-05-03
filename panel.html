@@ -29,7 +29,6 @@ body {
   cursor:pointer;
 }
 </style>
-
 </head>
 
 <body>
@@ -37,9 +36,9 @@ body {
 <h1>🎬 Panel Privado</h1>
 
 <div class="grid">
-<div class="card" onclick="location.href='curso1.html'">
-Curso Streaming
-</div>
+  <div class="card" onclick="location.href='curso1.html'">
+    Curso Streaming
+  </div>
 </div>
 
 <script>
@@ -47,10 +46,13 @@ Curso Streaming
 const firebaseConfig = {
   apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
   authDomain: "cursovip-5adf5.firebaseapp.com",
-  projectId: "cursovip-5adf5",
+  projectId: "cursovip-5adf5"
 };
 
-firebase.initializeApp(firebaseConfig);
+// 🔥 EVITA ERROR BLANCO
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (!user) {
