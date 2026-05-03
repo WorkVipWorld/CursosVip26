@@ -78,6 +78,15 @@ nav a{
   transform:scale(1.05);
 }
 
+/* URGENCIA */
+.banner{
+  background:#7f5af0;
+  text-align:center;
+  padding:10px;
+  font-weight:600;
+  animation:pulse 2s infinite;
+}
+
 /* SECCIONES */
 .section{
   padding:80px 20px;
@@ -108,13 +117,30 @@ nav a{
   border-color:#7f5af0;
 }
 
-/* PLAN DESTACADO */
+/* DESTACADO */
 .highlight{
   border:2px solid #7f5af0;
   transform:scale(1.05);
 }
 
-/* TELEGRAM FLOAT */
+/* GRATIS */
+.free{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:40px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* TESTIMONIO */
+.testimonial{
+  max-width:600px;
+  margin:auto;
+  color:#bbb;
+}
+
+/* TELEGRAM */
 .telegram{
   position:fixed;
   bottom:20px;
@@ -129,16 +155,6 @@ nav a{
   animation:pulse 2s infinite;
 }
 
-/* GRATIS */
-.free{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.05);
-  border-radius:20px;
-  padding:40px;
-  max-width:600px;
-  margin:auto;
-}
-
 /* ANIMACIONES */
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(20px);}
@@ -147,7 +163,7 @@ nav a{
 
 @keyframes pulse{
   0%{transform:scale(1);}
-  50%{transform:scale(1.1);}
+  50%{transform:scale(1.05);}
   100%{transform:scale(1);}
 }
 
@@ -155,6 +171,10 @@ nav a{
 </head>
 
 <body>
+
+<div class="banner">
+⚡ Acceso limitado — activación en minutos
+</div>
 
 <nav>
 <h1>Elite Streaming Hub</h1>
@@ -174,11 +194,10 @@ nav a{
 
 <div class="free">
 <p>
-Accede a contenido gratuito, métodos básicos y herramientas para comenzar.
-Únete al canal de Telegram para recibir actualizaciones diarias.
+Accede a contenido gratuito, métodos básicos y herramientas reales para comenzar hoy.
 </p>
 
-<a href="https://t.me/referenciasvip2026" class="btn">Unirme al Telegram</a>
+<a href="https://t.me/referenciasvip2026" class="btn">Entrar al Telegram VIP</a>
 </div>
 
 </section>
@@ -192,7 +211,7 @@ Accede a contenido gratuito, métodos básicos y herramientas para comenzar.
 <div class="card">
 <h3>Básico</h3>
 <p>$10</p>
-<p>Acceso limitado</p>
+<p>Acceso inicial</p>
 </div>
 
 <div class="card highlight">
@@ -211,7 +230,17 @@ Accede a contenido gratuito, métodos básicos y herramientas para comenzar.
 
 </section>
 
-<!-- TELEGRAM FLOAT -->
+<!-- CONFIANZA -->
+<section class="section">
+<h2>¿Por qué elegirnos?</h2>
+
+<p class="testimonial">
+Más de 30 usuarios activos ya están utilizando nuestro sistema para acceder a contenido premium de forma rápida y segura.
+</p>
+
+</section>
+
+<!-- TELEGRAM -->
 <a href="https://t.me/referenciasvip2026" class="telegram">
 📲 Telegram VIP
 </a>
