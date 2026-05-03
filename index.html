@@ -8,157 +8,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body {
   background: radial-gradient(circle at top, #1a1a2e, #0b0b15);
   color: white;
-  overflow-x: hidden;
 }
 
-/* NAV */
 nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  position: sticky;
-  top: 0;
-  backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.3);
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  background:rgba(0,0,0,0.3);
 }
 
-nav h1 {
-  color: #7f5af0;
-  font-weight: 700;
-}
+nav h1 {color:#7f5af0;}
 
-nav a {
-  color: #bbb;
-  text-decoration: none;
-}
-
-/* HERO */
 .hero {
-  text-align: center;
-  padding: 120px 20px;
-  animation: fadeIn 1s ease;
+  text-align:center;
+  padding:120px 20px;
 }
 
 .hero h2 {
-  font-size: 3rem;
-  background: linear-gradient(90deg, #7f5af0, #4cc9f0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-  color: #aaa;
-  margin: 20px 0;
-  font-size: 1.1rem;
+  font-size:3rem;
+  background: linear-gradient(90deg,#7f5af0,#4cc9f0);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .btn {
-  padding: 15px 35px;
-  background: linear-gradient(135deg, #7f5af0, #4cc9f0);
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  display: inline-block;
-  transition: 0.3s;
-  box-shadow: 0 0 20px rgba(127,90,240,0.5);
+  padding:15px 30px;
+  background:linear-gradient(135deg,#7f5af0,#4cc9f0);
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  display:inline-block;
+  margin-top:20px;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-}
+.section {padding:60px 20px;text-align:center;}
 
-/* SECTION */
-.section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-/* CARDS */
 .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 40px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
 }
 
 .card {
-  backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 30px;
-  border-radius: 16px;
-  width: 280px;
-  transition: 0.4s;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  background:#1a1a2e;
+  padding:20px;
+  border-radius:12px;
+  width:250px;
 }
-
-.card:hover {
-  transform: translateY(-10px) scale(1.03);
-  border-color: #7f5af0;
-}
-
-/* PRICING */
-.price {
-  font-size: 2.5rem;
-  margin: 10px 0;
-  color: #4cc9f0;
-}
-
-/* DESTACADO */
-.highlight {
-  border: 2px solid #7f5af0;
-  transform: scale(1.05);
-}
-
-/* BANNER */
-.banner {
-  background: linear-gradient(90deg, #7f5af0, #4cc9f0);
-  text-align: center;
-  padding: 10px;
-  font-weight: 600;
-}
-
-/* TESTIMONIOS */
-.testimonial {
-  max-width: 600px;
-  margin: 20px auto;
-  color: #bbb;
-}
-
-/* FOOTER */
-footer {
-  padding: 30px;
-  text-align: center;
-  color: #666;
-}
-
-/* ANIMACIÓN */
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
 </style>
 </head>
 
 <body>
-
-<div class="banner">
-⚡ Acceso rápido y soporte en tiempo real
-</div>
 
 <nav>
 <h1>Elite Streaming Hub</h1>
@@ -166,32 +72,12 @@ footer {
 </nav>
 
 <section class="hero">
-<h2>Accede a contenido premium sin complicaciones</h2>
-<p>Aprende, accede y automatiza todo desde un solo lugar.</p>
-<a href="https://wa.me/13542225162" class="btn">Activar acceso ahora</a>
-</section>
+<h2>Accede a contenido premium</h2>
+<p>Todo en un solo lugar</p>
 
-<section class="section">
-<h2>¿Qué obtienes?</h2>
+<!-- 🔥 BOTÓN AL PANEL -->
+<a href="panel.html" class="btn">Acceder al contenido</a>
 
-<div class="cards">
-
-<div class="card">
-<h3>Acceso guiado</h3>
-<p>Te enseñamos paso a paso desde cero.</p>
-</div>
-
-<div class="card">
-<h3>Activación rápida</h3>
-<p>Recibe acceso en minutos.</p>
-</div>
-
-<div class="card">
-<h3>Soporte directo</h3>
-<p>Atención personalizada siempre.</p>
-</div>
-
-</div>
 </section>
 
 <section class="section">
@@ -201,58 +87,21 @@ footer {
 
 <div class="card">
 <h3>Básico</h3>
-<div class="price">$10</div>
-<p>Acceso semanal + soporte</p>
-<a href="https://wa.me/13542225162" class="btn">Comprar</a>
+<p>$10</p>
 </div>
 
-<div class="card highlight">
-<h3>Pro ⭐</h3>
-<div class="price">$20</div>
-<p>Acceso completo + herramientas + VIP</p>
-<a href="https://wa.me/13542225162" class="btn">Más elegido</a>
+<div class="card">
+<h3>Pro</h3>
+<p>$20</p>
 </div>
 
 <div class="card">
 <h3>Full</h3>
-<div class="price">$35</div>
-<p>Experiencia total + soporte prioritario</p>
-<a href="https://wa.me/13542225162" class="btn">Comprar</a>
+<p>$35</p>
 </div>
 
 </div>
 </section>
-
-<section class="section">
-<h2>Contenido incluido</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Curso completo</h3>
-<p>Videos, guías y herramientas actualizadas.</p>
-</div>
-
-<div class="card">
-<h3>Comunidad VIP</h3>
-<p>Acceso a grupo privado con contenido diario.</p>
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<h2>Confianza</h2>
-
-<p class="testimonial">
-Más de 100 usuarios activos confían en nuestro sistema para acceder a contenido premium de forma simple y segura.
-</p>
-
-</section>
-
-<footer>
-© 2026 Elite Streaming Hub
-</footer>
 
 </body>
 </html>
