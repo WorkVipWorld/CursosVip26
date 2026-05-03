@@ -8,59 +8,149 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
-body {
-  background: radial-gradient(circle at top, #1a1a2e, #0b0b15);
-  color: white;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
 }
 
-nav {
+body{
+  background: radial-gradient(circle at top, #1a1a2e, #0b0b15);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
   display:flex;
   justify-content:space-between;
   padding:20px 40px;
+  backdrop-filter:blur(10px);
   background:rgba(0,0,0,0.3);
+  position:sticky;
+  top:0;
 }
 
-nav h1 {color:#7f5af0;}
+nav h1{
+  color:#7f5af0;
+}
 
-.hero {
+nav a{
+  color:#aaa;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
   text-align:center;
   padding:120px 20px;
+  animation:fadeIn 1s ease;
 }
 
-.hero h2 {
+.hero h2{
   font-size:3rem;
-  background: linear-gradient(90deg,#7f5af0,#4cc9f0);
+  background:linear-gradient(90deg,#7f5af0,#4cc9f0);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.btn {
+.hero p{
+  margin-top:15px;
+  color:#bbb;
+}
+
+/* BOTONES */
+.btn{
   padding:15px 30px;
   background:linear-gradient(135deg,#7f5af0,#4cc9f0);
-  border-radius:10px;
+  border-radius:12px;
   text-decoration:none;
   color:white;
   display:inline-block;
   margin-top:20px;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(127,90,240,0.5);
 }
 
-.section {padding:60px 20px;text-align:center;}
+.btn:hover{
+  transform:scale(1.05);
+}
 
-.cards {
+/* SECCIONES */
+.section{
+  padding:80px 20px;
+  text-align:center;
+}
+
+/* CARDS */
+.cards{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
-  gap:20px;
+  gap:25px;
+  margin-top:40px;
 }
 
-.card {
-  background:#1a1a2e;
-  padding:20px;
-  border-radius:12px;
-  width:250px;
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:25px;
+  border-radius:16px;
+  width:260px;
+  transition:0.3s;
 }
+
+.card:hover{
+  transform:translateY(-10px);
+  border-color:#7f5af0;
+}
+
+/* PLAN DESTACADO */
+.highlight{
+  border:2px solid #7f5af0;
+  transform:scale(1.05);
+}
+
+/* TELEGRAM FLOAT */
+.telegram{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#229ED9;
+  color:white;
+  padding:15px 20px;
+  border-radius:50px;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 0 20px rgba(34,158,217,0.6);
+  animation:pulse 2s infinite;
+}
+
+/* GRATIS */
+.free{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:40px;
+  max-width:600px;
+  margin:auto;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+
 </style>
 </head>
 
@@ -68,18 +158,32 @@ nav h1 {color:#7f5af0;}
 
 <nav>
 <h1>Elite Streaming Hub</h1>
-<a href="https://wa.me/13542225162">Soporte</a>
+<a href="login.html">Acceder</a>
 </nav>
 
 <section class="hero">
-<h2>Accede a contenido premium</h2>
-<p>Todo en un solo lugar</p>
+<h2>Accede a contenido premium sin límites</h2>
+<p>Aprende, automatiza y accede a herramientas exclusivas</p>
 
-<!-- 🔥 BOTÓN AL PANEL -->
-<a href="login.html" class="btn">Acceder al contenido</a>
+<a href="login.html" class="btn">Entrar ahora</a>
+</section>
+
+<!-- GRATIS -->
+<section class="section">
+<h2>🎁 Contenido GRATIS</h2>
+
+<div class="free">
+<p>
+Accede a contenido gratuito, métodos básicos y herramientas para comenzar.
+Únete al canal de Telegram para recibir actualizaciones diarias.
+</p>
+
+<a href="https://t.me/referenciasvip2026" class="btn">Unirme al Telegram</a>
+</div>
 
 </section>
 
+<!-- PLANES -->
 <section class="section">
 <h2>Planes</h2>
 
@@ -88,20 +192,29 @@ nav h1 {color:#7f5af0;}
 <div class="card">
 <h3>Básico</h3>
 <p>$10</p>
+<p>Acceso limitado</p>
 </div>
 
-<div class="card">
-<h3>Pro</h3>
+<div class="card highlight">
+<h3>Pro ⭐</h3>
 <p>$20</p>
+<p>Más herramientas + contenido VIP</p>
 </div>
 
 <div class="card">
 <h3>Full</h3>
 <p>$35</p>
+<p>Acceso total + soporte</p>
 </div>
 
 </div>
+
 </section>
+
+<!-- TELEGRAM FLOAT -->
+<a href="https://t.me/referenciasvip2026" class="telegram">
+📲 Telegram VIP
+</a>
 
 </body>
 </html>
