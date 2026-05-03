@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Login</title>
 
-<!-- Firebase compat -->
+<!-- Firebase versión COMPAT -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
@@ -57,13 +57,11 @@ button {
 
 <script>
 
-// 🔥 TU CONFIG YA INTEGRADA
+// 🔥 CONFIG CORRECTA (SIN import)
 const firebaseConfig = {
   apiKey: "AIzaSyA9tS0C-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
   authDomain: "cursovip-5adf5.firebaseapp.com",
   projectId: "cursovip-5adf5",
-  storageBucket: "cursovip-5adf5.firebasestorage.app",
-  messagingSenderId: "560262525287",
   appId: "1:560262525287:web:d648afa83054e97f2f316e"
 };
 
@@ -71,19 +69,15 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 function register(){
-  auth.createUserWithEmailAndPassword(
-    email.value, password.value
-  )
+  auth.createUserWithEmailAndPassword(email.value, password.value)
   .then(()=>alert("Cuenta creada"))
-  .catch(err=>alert(err.message));
+  .catch(e=>alert(e.message));
 }
 
 function login(){
-  auth.signInWithEmailAndPassword(
-    email.value, password.value
-  )
+  auth.signInWithEmailAndPassword(email.value, password.value)
   .then(()=>window.location="panel.html")
-  .catch(err=>alert(err.message));
+  .catch(e=>alert(e.message));
 }
 
 </script>
