@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Hub | Acceso Inteligente</title>
+<title>Elite Streaming Hub</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,8 +17,9 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+  background: radial-gradient(circle at top, #1a1a2e, #0b0b15);
   color: white;
+  overflow-x: hidden;
 }
 
 /* NAV */
@@ -26,57 +27,70 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.3);
 }
 
 nav h1 {
   color: #7f5af0;
+  font-weight: 700;
 }
 
 nav a {
-  color: #aaa;
+  color: #bbb;
   text-decoration: none;
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 100px 20px;
+  padding: 120px 20px;
+  animation: fadeIn 1s ease;
 }
 
 .hero h2 {
   font-size: 3rem;
+  background: linear-gradient(90deg, #7f5af0, #4cc9f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
-  color: #bbb;
+  color: #aaa;
   margin: 20px 0;
+  font-size: 1.1rem;
 }
 
 .btn {
-  padding: 15px 30px;
-  background: linear-gradient(135deg, #7f5af0, #6246ea);
-  border-radius: 10px;
+  padding: 15px 35px;
+  background: linear-gradient(135deg, #7f5af0, #4cc9f0);
+  border-radius: 12px;
   text-decoration: none;
   color: white;
+  font-weight: 600;
   display: inline-block;
   transition: 0.3s;
+  box-shadow: 0 0 20px rgba(127,90,240,0.5);
 }
 
 .btn:hover {
   transform: scale(1.05);
 }
 
-/* GLASS CARDS */
+/* SECTION */
 .section {
   padding: 80px 20px;
   text-align: center;
 }
 
+/* CARDS */
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   margin-top: 40px;
 }
 
@@ -86,12 +100,13 @@ nav a {
   border: 1px solid rgba(255,255,255,0.1);
   padding: 30px;
   border-radius: 16px;
-  width: 300px;
-  transition: 0.3s;
+  width: 280px;
+  transition: 0.4s;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.03);
   border-color: #7f5af0;
 }
 
@@ -99,20 +114,41 @@ nav a {
 .price {
   font-size: 2.5rem;
   margin: 10px 0;
+  color: #4cc9f0;
 }
 
-/* URGENCY */
+/* DESTACADO */
+.highlight {
+  border: 2px solid #7f5af0;
+  transform: scale(1.05);
+}
+
+/* BANNER */
 .banner {
-  background: #7f5af0;
-  padding: 10px;
+  background: linear-gradient(90deg, #7f5af0, #4cc9f0);
   text-align: center;
+  padding: 10px;
+  font-weight: 600;
+}
+
+/* TESTIMONIOS */
+.testimonial {
+  max-width: 600px;
+  margin: 20px auto;
+  color: #bbb;
 }
 
 /* FOOTER */
 footer {
   padding: 30px;
   text-align: center;
-  color: #777;
+  color: #666;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
 }
 
 </style>
@@ -121,18 +157,18 @@ footer {
 <body>
 
 <div class="banner">
-⚡ Oferta limitada: acceso activado en menos de 15 minutos
+⚡ Acceso rápido y soporte en tiempo real
 </div>
 
 <nav>
 <h1>Elite Streaming Hub</h1>
-<a href="#">Soporte</a>
+<a href="https://wa.me/13542225162">Soporte</a>
 </nav>
 
 <section class="hero">
-<h2>Informacion actualizada a diario</h2>
-<p>Unete a nuestra comunidad y vuelvete un pro.</p>
-<a href="https://wa.me/13542225162" class="btn">Comprar ahora</a>
+<h2>Accede a contenido premium sin complicaciones</h2>
+<p>Aprende, accede y automatiza todo desde un solo lugar.</p>
+<a href="https://wa.me/13542225162" class="btn">Activar acceso ahora</a>
 </section>
 
 <section class="section">
@@ -141,18 +177,18 @@ footer {
 <div class="cards">
 
 <div class="card">
-<h3>Configuración total</h3>
-<p>No necesitas saber nada.Te enseñamos desde 0.</p>
+<h3>Acceso guiado</h3>
+<p>Te enseñamos paso a paso desde cero.</p>
 </div>
 
 <div class="card">
-<h3>Acceso inmediato</h3>
-<p>Recibe todo en minutos.</p>
+<h3>Activación rápida</h3>
+<p>Recibe acceso en minutos.</p>
 </div>
 
 <div class="card">
-<h3>Soporte real</h3>
-<p>Atención directa por WhatsApp.</p>
+<h3>Soporte directo</h3>
+<p>Atención personalizada siempre.</p>
 </div>
 
 </div>
@@ -166,53 +202,52 @@ footer {
 <div class="card">
 <h3>Básico</h3>
 <div class="price">$10</div>
-<p>1 semana grupo vip</p>
-<a href="https://wa.me/TUNUMERO" class="btn">Comprar</a>
+<p>Acceso semanal + soporte</p>
+<a href="https://wa.me/13542225162" class="btn">Comprar</a>
 </div>
 
-<div class="card">
+<div class="card highlight">
 <h3>Pro ⭐</h3>
 <div class="price">$20</div>
-<p>15 mes grupo vip + herramientas y canal tg vip</p>
-<a href="https://wa.me/TUNUMERO" class="btn">Elegir</a>
+<p>Acceso completo + herramientas + VIP</p>
+<a href="https://wa.me/13542225162" class="btn">Más elegido</a>
 </div>
 
 <div class="card">
 <h3>Full</h3>
 <div class="price">$35</div>
-<p>1 Mes Acceso completo + VIP FULL </p>
-<a href="https://wa.me/TUNUMERO" class="btn">Comprar</a>
+<p>Experiencia total + soporte prioritario</p>
+<a href="https://wa.me/13542225162" class="btn">Comprar</a>
 </div>
 
 </div>
 </section>
 
-<!-- 🔥 SECCIÓN EDITABLE (OFERTAS / CURSOS) -->
 <section class="section">
-<h2>🔥 Ofertas / Contenido disponible</h2>
+<h2>Contenido incluido</h2>
 
 <div class="cards">
 
-<!-- EDITA DESDE AQUÍ -->
 <div class="card">
-<h3>Curso Premium</h3>
-<p>Acceso completo incluido+herramientas+videos</p>
+<h3>Curso completo</h3>
+<p>Videos, guías y herramientas actualizadas.</p>
 </div>
 
 <div class="card">
-<h3>Acceso a grupo VIP</h3>
-<p>Bins a diarios,metodos,tutoriales,herramientas etc</p>
+<h3>Comunidad VIP</h3>
+<p>Acceso a grupo privado con contenido diario.</p>
 </div>
-<!-- HASTA AQUÍ -->
 
 </div>
 </section>
 
 <section class="section">
-<h2>¿Por qué elegirnos?</h2>
-<p style="max-width:600px;margin:auto;color:#bbb;">
-Traemos los bines mas frescos, probados a diarios, clases en vivo, las mejores herramientas e informacion.
+<h2>Confianza</h2>
+
+<p class="testimonial">
+Más de 100 usuarios activos confían en nuestro sistema para acceder a contenido premium de forma simple y segura.
 </p>
+
 </section>
 
 <footer>
