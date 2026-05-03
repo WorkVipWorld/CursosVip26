@@ -2,64 +2,138 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Streaming Hub | Acceso</title>
 
-<!-- Firebase (VERSIÓN CORRECTA PARA HTML) -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-body {
-  background:#0f0f1a;
-  color:white;
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  background: radial-gradient(circle at top, #1a1a2e, #0b0b15);
+  height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
-  font-family:sans-serif;
-}
-
-.box {
-  background:#1a1a2e;
-  padding:30px;
-  border-radius:10px;
-}
-
-input {
-  display:block;
-  margin:10px 0;
-  padding:10px;
-  width:100%;
-}
-
-button {
-  padding:10px;
-  background:#7f5af0;
   color:white;
+}
+
+/* CONTENEDOR */
+.container{
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:40px;
+  border-radius:20px;
+  width:320px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(0,0,0,0.4);
+  animation:fadeIn 0.8s ease;
+}
+
+/* TITULO */
+h2{
+  margin-bottom:20px;
+  font-weight:600;
+}
+
+/* INPUTS */
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
   border:none;
+  outline:none;
+  background:#0f0f1a;
+  color:white;
+}
+
+/* BOTONES */
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
   margin-top:10px;
   cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
 }
+
+/* BOTÓN PRINCIPAL */
+.btn-main{
+  background:linear-gradient(135deg,#7f5af0,#4cc9f0);
+}
+
+.btn-main:hover{
+  transform:scale(1.05);
+}
+
+/* BOTÓN SECUNDARIO */
+.btn-sec{
+  background:#1a1a2e;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.btn-sec:hover{
+  background:#2a2a40;
+}
+
+/* TEXTO */
+.small{
+  margin-top:10px;
+  font-size:0.8rem;
+  color:#aaa;
+}
+
+/* LOADING */
+.loader{
+  display:none;
+  margin-top:10px;
+  font-size:0.9rem;
+  color:#4cc9f0;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="box">
-<h2>Acceso</h2>
+<div class="container">
+  <h2>🔐 Acceso</h2>
 
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Contraseña">
+  <input type="email" id="email" placeholder="Correo electrónico">
+  <input type="password" id="password" placeholder="Contraseña">
 
-<button onclick="login()">Entrar</button>
-<button onclick="register()">Registrarse</button>
+  <button class="btn-main" onclick="login()">Entrar</button>
+  <button class="btn-sec" onclick="register()">Crear cuenta</button>
+
+  <div class="loader" id="loader">Procesando...</div>
+  <p class="small">Acceso seguro con Firebase</p>
 </div>
 
 <script>
 
 window.addEventListener("load", () => {
 
-  // 🔥 CONFIG NUEVA (LA TUYA CORRECTA)
   const firebaseConfig = {
     apiKey: "AIzaSyA9tSOC-cBhnBe3qNmMu0Yo2nTLpfzGjPU",
     authDomain: "cursovip-5adf5.firebaseapp.com",
@@ -69,31 +143,54 @@ window.addEventListener("load", () => {
     appId: "1:56026252587:web:f341af48c15995802f316e"
   };
 
-  // 🔥 INICIALIZAR FIREBASE
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
 
   const auth = firebase.auth();
+  const loader = document.getElementById("loader");
+
+  function showLoader(state){
+    loader.style.display = state ? "block" : "none";
+  }
 
   // REGISTRO
   window.register = () => {
+    showLoader(true);
+
     auth.createUserWithEmailAndPassword(
-      document.getElementById("email").value,
-      document.getElementById("password").value
+      email.value,
+      password.value
     )
-    .then(() => alert("Cuenta creada correctamente"))
-    .catch(e => alert(e.message));
+    .then(() => {
+      showLoader(false);
+      alert("Cuenta creada correctamente");
+    })
+    .catch(e => {
+      showLoader(false);
+      alert(e.message);
+    });
   };
 
   // LOGIN
   window.login = () => {
-    auth.signInWithEmailAndPassword(
-      document.getElementById("email").value,
-      document.getElementById("password").value
-    )
-    .then(() => window.location.href = "panel.html")
-    .catch(e => alert(e.message));
+    showLoader(true);
+
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(() => {
+      return auth.signInWithEmailAndPassword(
+        email.value,
+        password.value
+      );
+    })
+    .then(() => {
+      showLoader(false);
+      window.location.href = "panel.html";
+    })
+    .catch(e => {
+      showLoader(false);
+      alert(e.message);
+    });
   };
 
 });
